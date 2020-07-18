@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{80AF2797-B6C7-40C9-850C-09EB330FF1FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9079A95D-E5E2-4F68-B948-823268181AAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{D9654AD3-25EF-4F1F-8D5A-296E266B6F28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.Domain", "Common\Enigma.Domain\Enigma.Domain.csproj", "{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.Server.Proptotype", "Services\Enigma.Server.Proptotype\Enigma.Server.Proptotype.csproj", "{D8362435-B7F5-4C23-A7D7-B4A1836F7441}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{9BB55374-D537-4090-BBDC-A6EDB9F2A645}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enigma.Client.WPF", "Clients\WPF\Enigma.Client.WPF\Enigma.Client.WPF.csproj", "{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8362435-B7F5-4C23-A7D7-B4A1836F7441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8362435-B7F5-4C23-A7D7-B4A1836F7441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8362435-B7F5-4C23-A7D7-B4A1836F7441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8362435-B7F5-4C23-A7D7-B4A1836F7441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9BAF429-D81E-45F8-92BF-9DEBCF9C65EF} = {80AF2797-B6C7-40C9-850C-09EB330FF1FA}
+		{D8362435-B7F5-4C23-A7D7-B4A1836F7441} = {9079A95D-E5E2-4F68-B948-823268181AAB}
+		{9BB55374-D537-4090-BBDC-A6EDB9F2A645} = {D9654AD3-25EF-4F1F-8D5A-296E266B6F28}
+		{D0B80FBE-C2A8-489B-9D99-F6C6636D7EEB} = {9BB55374-D537-4090-BBDC-A6EDB9F2A645}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24CAA930-56F2-4C64-B0B5-F4020A98918B}
+	EndGlobalSection
+EndGlobal
