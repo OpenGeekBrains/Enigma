@@ -7,6 +7,22 @@
         Title="MainWindow"
         Width="800" Height="450">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Name="SideBar" MinWidth="250" Background="LightGray">
 
+        </DockPanel>
+        <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Background="DimGray"/>
+
+        <DockPanel Grid.Column="1" Name="ChatPart">
+            <StackPanel DockPanel.Dock="Bottom" Name="InputControl" Background="LightGray" Height="80">
+
+            </StackPanel>
+            <ListView Name="Chat">
+
+            </ListView>
+        </DockPanel>
     </Grid>
 </Window>
