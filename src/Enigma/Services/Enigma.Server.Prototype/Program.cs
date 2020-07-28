@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Enigma.Server.Proptotype
+namespace Enigma.Server.Prototype
 {
     public class Program
     {

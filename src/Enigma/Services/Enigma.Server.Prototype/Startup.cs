@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Enigma.Server.Proptotype
+namespace Enigma.Server.Prototype
 {
     public class Startup
     {
