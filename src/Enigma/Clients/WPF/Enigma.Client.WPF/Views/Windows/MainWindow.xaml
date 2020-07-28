@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Enigma.Client.WPF"
         Title="MainWindow"
-        Width="800" Height="450">
+        Width="800" Height="450" MinWidth="600" MinHeight="300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -21,7 +21,9 @@
                 </DockPanel>
             </Border>
 
-            <ListBox></ListBox>
+            <ListBox>
+			
+			</ListBox>
         </DockPanel>
 
         <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Background="{StaticResource GridSplitterBackgroundColor}"/>
@@ -32,11 +34,11 @@
             </DockPanel>
 
             <DockPanel DockPanel.Dock="Bottom" Name="InputControl" Background="{StaticResource SideBarsBackgroundColor}" Height="80">
-                <Button DockPanel.Dock="Left"/>
-                <Button DockPanel.Dock="Right"/>
-                <Button DockPanel.Dock="Right"/>
+                <Button Content="Отправить!" DockPanel.Dock="Left"/>
+                <Button Content="Отмена" DockPanel.Dock="Right"/>
+                <Button Content="Смайлик?" DockPanel.Dock="Right"/>
 
-                <TextBox/>
+                <TextBox Name="InputMessage"/>
             </DockPanel>
 
             <ListView Name="Chat">
