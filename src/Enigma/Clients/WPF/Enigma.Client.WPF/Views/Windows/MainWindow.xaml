@@ -11,15 +11,34 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DockPanel Name="SideBar" MinWidth="250" Background="LightGray">
 
+        <DockPanel Name="SideBar" MinWidth="250" Background="{StaticResource SideBarsBackgroundColor}">
+            <Border DockPanel.Dock="Top" Name="SideBarHeader" BorderThickness="8">
+                <DockPanel>
+                    <Button Name="BtnHamburger" Content="Hum"></Button>
+
+                    <TextBox />
+                </DockPanel>
+            </Border>
+
+            <ListBox></ListBox>
         </DockPanel>
-        <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Background="DimGray"/>
+
+        <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Background="{StaticResource GridSplitterBackgroundColor}"/>
 
         <DockPanel Grid.Column="1" Name="ChatPart">
-            <StackPanel DockPanel.Dock="Bottom" Name="InputControl" Background="LightGray" Height="80">
+            <DockPanel DockPanel.Dock="Top" Name="ChatPartHeader">
 
-            </StackPanel>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" Name="InputControl" Background="{StaticResource SideBarsBackgroundColor}" Height="80">
+                <Button DockPanel.Dock="Left"/>
+                <Button DockPanel.Dock="Right"/>
+                <Button DockPanel.Dock="Right"/>
+
+                <TextBox/>
+            </DockPanel>
+
             <ListView Name="Chat">
 
             </ListView>
