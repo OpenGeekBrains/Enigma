@@ -1,6 +1,6 @@
 using System;
 
-namespace Enigma.Server.Proptotype
+namespace Enigma.Server.Prototype
 {
     public class WeatherForecast
     {
