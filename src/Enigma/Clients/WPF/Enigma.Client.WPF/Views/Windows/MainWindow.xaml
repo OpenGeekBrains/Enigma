@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Enigma.Client.WPF"
         Width="800" Height="450"
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
-        Title="{Binding Title}">
+        Title="MainWindow">
     <Grid>
-
     </Grid>
 </Window>
