@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Enigma.Client.WPF"
         Title="MainWindow"
-        Width="800" Height="450" MinWidth="600" MinHeight="300" WindowStartupLocation="CenterScreen">
+        Width="800" Height="450" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
