@@ -10,32 +10,34 @@ namespace Enigma.Client.WPF.ViewModels
 {
     public class FirstViewModel : ViewModelBase
     {
-        private readonly NavigationService _navigationService;
+        private readonly NavigationService _NavigationService;
         
         public string Title { get; set; }
 
         //для проверки навигационного сервиса
-        private string input;
+        private string _Input;
+
         public string Input
         {
-            get => input;
-            set => Set(ref input, value);
+            get => _Input;
+            set => Set(ref _Input, value);
         }
 
-        private RelayCommand _executeCommand;
+        private RelayCommand _ExecuteCommand;
+
         public RelayCommand ExecuteCommand => 
-            _executeCommand ?? new RelayCommand(async () => await ExecuteAsync());
+            _ExecuteCommand ??= new RelayCommand(async () => await ExecuteAsync());
 
         private Task ExecuteAsync()
         {
-            Debug.WriteLine($"Current value: {input}");
-            return _navigationService.ShowDialogAsync(WindowsDictionary.SecondWindow, input);
+            Debug.WriteLine($"Current value: {_Input}");
+            return _NavigationService.ShowDialogAsync(WindowsDictionary.SecondWindow, _Input);
         }
         //для проверки навигационного сервиса
 
         public FirstViewModel(NavigationService navigationService, IOptions<AppSettings> options)
         {
-            _navigationService = navigationService;
+            _NavigationService = navigationService;
             Title = options.Value.MainWindowTitle;
         }
     }

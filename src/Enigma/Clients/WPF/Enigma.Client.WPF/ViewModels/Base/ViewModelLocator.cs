@@ -4,8 +4,10 @@ namespace Enigma.Client.WPF.ViewModels.Base
 {
     internal class ViewModelLocator
     {
-        public MainViewModel MainViewModel => App.ServiceProvider.GetRequiredService<MainViewModel>();
-        public FirstViewModel FirstViewModel => App.ServiceProvider.GetRequiredService<FirstViewModel>();
-        public SecondViewModel SecondViewModel => App.ServiceProvider.GetRequiredService<SecondViewModel>();
+        public MainViewModel MainViewModel => App.Services.GetRequiredService<MainViewModel>();
+
+        public FirstViewModel FirstViewModel => App.Services.GetRequiredService<FirstViewModel>();
+
+        public SecondViewModel SecondViewModel => App.Services.GetRequiredService<SecondViewModel>();
     }
 }

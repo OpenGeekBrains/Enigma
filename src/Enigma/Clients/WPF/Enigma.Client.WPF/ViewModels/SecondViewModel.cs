@@ -6,11 +6,12 @@ namespace Enigma.Client.WPF.ViewModels
 {
     public class SecondViewModel : ViewModelBase, IActivable
     {
-        private string parameter;
+        private string _Parameter;
+
         public string Parameter
         {
-            get => parameter;
-            set => Set(ref parameter, value);
+            get => _Parameter;
+            set => Set(ref _Parameter, value);
         }
 
         public Task ActivateAsync(object parameter)

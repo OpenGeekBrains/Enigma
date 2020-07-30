@@ -12,43 +12,39 @@ namespace Enigma.Client.WPF
 {
     public partial class App
     {
-        private readonly IHost host;
+        private readonly IHost _Host;
 
-        public static IServiceProvider ServiceProvider { get; private set; }
- 
+        public static IServiceProvider Services { get; private set; }
+
         public App()
         {
-            host = Host.CreateDefaultBuilder()  
-                .ConfigureAppConfiguration((context, builder) =>
-                {
-                    builder.AddJsonFile("AppSettings.local.json", optional: true, reloadOnChange: true);
-                })
-                .ConfigureServices((context, services) =>
-                {
-                    ConfigureServices(context.Configuration, services);
-                })
-                .ConfigureLogging(logging => 
-                {
-                    // Для сервиса логов
-                })
-                .Build();
+            _Host = Host
+               .CreateDefaultBuilder()
+               .ConfigureAppConfiguration((host, config) => config
+                  .AddJsonFile("AppSettings.local.json", optional: true, reloadOnChange: true))
+               .ConfigureServices((host, services) => ConfigureServices(host.Configuration, services))
+               .ConfigureLogging(logs =>
+               {
+                   // Для сервиса логов
+               })
+               .Build();
 
-            ServiceProvider = host.Services;
+            Services = _Host.Services;
         }
- 
-        private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
+
+        private static void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
             services.Configure<AppSettings>(configuration.GetSection(nameof(AppSettings)));
-            
+
             // Сервис оконной навигации
-            services.AddScoped<NavigationService>(serviceProvider =>
+            services.AddScoped(Provider =>
             {
-                var navigationService = new NavigationService(serviceProvider);
-                navigationService.Configure(WindowsDictionary.MainWindow, typeof(MainWindow));
-                navigationService.Configure(WindowsDictionary.FirstWindow, typeof(FirstWindow));
-                navigationService.Configure(WindowsDictionary.SecondWindow, typeof(SecondWindow));
- 
-                return navigationService;
+                var navigation_service = new NavigationService(Provider);
+                navigation_service.Configure(WindowsDictionary.MainWindow, typeof(MainWindow));
+                navigation_service.Configure(WindowsDictionary.FirstWindow, typeof(FirstWindow));
+                navigation_service.Configure(WindowsDictionary.SecondWindow, typeof(SecondWindow));
+
+                return navigation_service;
             });
 
 
@@ -56,32 +52,29 @@ namespace Enigma.Client.WPF
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<FirstViewModel>();
             services.AddSingleton<SecondViewModel>();
- 
+
             // Для регистрации всех окон приложения
             services.AddTransient<MainWindow>();
             services.AddTransient<FirstWindow>();
             services.AddTransient<SecondWindow>();
         }
- 
+
         protected override async void OnStartup(StartupEventArgs e)
         {
-            await host.StartAsync();
+            await _Host.StartAsync();
 
-            var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
- 
-            await navigationService.ShowAsync(WindowsDictionary.FirstWindow);
- 
+            var navigation = Services.GetRequiredService<NavigationService>();
+
+            await navigation.ShowAsync(WindowsDictionary.FirstWindow);
+
             base.OnStartup(e);
         }
- 
+
         protected override async void OnExit(ExitEventArgs e)
         {
-            using (host)
-            {
-                await host.StopAsync(TimeSpan.FromSeconds(5));
-            }
- 
             base.OnExit(e);
+
+            using (_Host) await _Host.StopAsync(TimeSpan.FromSeconds(5));
         }
     }
 }

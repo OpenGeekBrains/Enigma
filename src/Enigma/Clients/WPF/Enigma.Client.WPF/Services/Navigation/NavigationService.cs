@@ -8,40 +8,34 @@ namespace Enigma.Client.WPF.Services.Navigation
 {
     public class NavigationService
     {
-        private Dictionary<string, Type> windows { get; } = new Dictionary<string, Type>();
+        private Dictionary<string, Type> Windows { get; } = new Dictionary<string, Type>();
  
-        private readonly IServiceProvider serviceProvider;
+        private readonly IServiceProvider Services;
  
-        public void Configure(string key, Type windowType) => windows.Add(key, windowType);
+        public void Configure(string key, Type WindowType) => Windows.Add(key, WindowType);
  
-        public NavigationService(IServiceProvider serviceProvider)
+        public NavigationService(IServiceProvider Services) => this.Services = Services;
+
+        public async Task ShowAsync(string WindowKey, object Parameter = null)
         {
-            this.serviceProvider = serviceProvider;
-        }
- 
-        public async Task ShowAsync(string windowKey, object parameter = null)
-        {
-            var window = await GetAndActivateWindowAsync(windowKey, parameter);
+            var window = await GetAndActivateWindowAsync(WindowKey, Parameter);
             window.Show();
         }
  
-        public async Task<bool?> ShowDialogAsync(string windowKey, object parameter = null)
+        public async Task<bool?> ShowDialogAsync(string WindowKey, object Parameter = null)
         {
-            var window = await GetAndActivateWindowAsync(windowKey, parameter);
+            var window = await GetAndActivateWindowAsync(WindowKey, Parameter);
             return window.ShowDialog();
         }
  
-        private async Task<Window> GetAndActivateWindowAsync(string windowKey, object parameter = null)
+        private async Task<Window> GetAndActivateWindowAsync(string WindowKey, object Parameter = null)
         {
-            var window = serviceProvider.GetRequiredService(windows[windowKey])
-                as Window;
- 
-            if (window?.DataContext is IActivable activable)
-            {
-                await activable.ActivateAsync(parameter);
-            }
- 
+            var service = Services.GetRequiredService(Windows[WindowKey]);
+            if (!(service is Window { DataContext: var context } window)) return null;
+            if (!(context is IActivable activable)) return window;
+            await activable.ActivateAsync(Parameter);
             return window;
+
         }
     }
 }
