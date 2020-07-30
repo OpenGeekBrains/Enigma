@@ -35,10 +35,10 @@ namespace Enigma.Client.WPF.ViewModels
         }
         //для проверки навигационного сервиса
 
-        public FirstViewModel(NavigationService navigationService, IOptions<AppSettings> options)
+        public FirstViewModel(NavigationService NavigationService, IOptions<AppSettings> Options)
         {
-            _NavigationService = navigationService;
-            Title = options.Value.MainWindowTitle;
+            _NavigationService = NavigationService;
+            Title = Options.Value.MainWindowTitle;
         }
     }
 }

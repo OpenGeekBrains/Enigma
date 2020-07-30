@@ -1,15 +1,7 @@
-﻿using System.Windows;
-
-namespace Enigma.Client.WPF.Views.Windows
+﻿namespace Enigma.Client.WPF.Views.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для SecondWindow.xaml
-    /// </summary>
-    public partial class SecondWindow : Window
+    public partial class SecondWindow
     {
-        public SecondWindow()
-        {
-            InitializeComponent();
-        }
+        public SecondWindow() => InitializeComponent();
     }
 }
