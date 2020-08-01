@@ -4,15 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:Enigma.Client.WPF"
-        Title="MainWindow"
-        Title="Авторизация" Height="300" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <StackPanel Margin="10">
-        <TextBlock Text="Логин:" HorizontalAlignment="Right" Margin="5,0,0,2"/>
-        <TextBox x:Name="StringTextBoxLogin" Width="100" HorizontalAlignment="Left"/>
-        
-        <TextBlock Text="Пароль:" HorizontalAlignment="Right" Margin="5,15,0,2"/>
-        <PasswordBox x:Name="StringPasswordBoxPassword" Width="100" HorizontalAlignment="Left"/>
-        
-        <Button Content="Вход в Энигму" Margin="0,15,0,0"  FontSize="16"/>
-    </StackPanel>
+        Title="Авторизация" Height="250" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="10">
+            <TextBlock Text="Логин:" Margin="5,0,0,2"/>
+            <TextBox x:Name="StringTextBoxLogin"/>
+
+            <TextBlock Text="Пароль:" Margin="5,15,0,2"/>
+            <PasswordBox x:Name="StringPasswordBoxPassword"/>
+
+            <Button Content="Вход" Margin="0,15,0,0" FontSize="16"/>
+        </StackPanel>
+
+        <!-- Place for Logo -->
+    </DockPanel>
 </Window>
