@@ -6,44 +6,63 @@
         xmlns:l="clr-namespace:Enigma.Client.WPF"
         Title="MainWindow"
         Width="800" Height="450" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Grid.IsSharedSizeScope="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250" SharedSizeGroup="SideBarSizeGroup"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel Name="SideBar" MinWidth="250" Background="{StaticResource SideBarsBackgroundColor}">
-            <Border DockPanel.Dock="Top" Name="SideBarHeader" BorderThickness="8">
-                <DockPanel>
-                    <Button Name="BtnHamburger" Content="Hum"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" SharedSizeGroup="ChatHeaderSizeGroup"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-                    <TextBox />
-                </DockPanel>
-            </Border>
+        <DockPanel Grid.Row="0" Grid.Column="0" Background="{StaticResource SideBarsBackgroundColor}">
+            <Button Name="BtnHamburger" Content="Hum" Height="38" Width="38" Margin="0" BorderThickness="3" BorderBrush="Transparent"></Button>
 
-            <ListBox>
-			
-			</ListBox>
+            <TextBox  VerticalAlignment="Center" Margin="6"/>
         </DockPanel>
 
-        <GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Background="{StaticResource GridSplitterBackgroundColor}"/>
+        <DockPanel Grid.Row="1" Grid.Column="0" Name="SideBar" Background="{StaticResource SideBarsBackgroundColor}">
 
-        <DockPanel Grid.Column="1" Name="ChatPart">
+            <ListBox Background="{StaticResource SideBarsBackgroundColor}"/>
+        </DockPanel>
+
+        <GridSplitter Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Right" Width="3" Background="{StaticResource GridSplitterBackgroundColor}"/>
+
+        <DockPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Name="ChatPart">
             <DockPanel DockPanel.Dock="Top" Name="ChatPartHeader">
 
             </DockPanel>
 
-            <DockPanel DockPanel.Dock="Bottom" Name="InputControl" Background="{StaticResource SideBarsBackgroundColor}" Height="80">
-                <Button Content="Отправить!" DockPanel.Dock="Left"/>
-                <Button Content="Отмена" DockPanel.Dock="Right"/>
-                <Button Content="Смайлик?" DockPanel.Dock="Right"/>
+            <DockPanel DockPanel.Dock="Bottom" Name="InputControl" Background="{StaticResource SideBarsBackgroundColor}" MinHeight="30" MaxHeight="80">
+                <Button DockPanel.Dock="Left" Content="Attach"/>
+                <Button DockPanel.Dock="Right" Content="Send"/>
+                <Button DockPanel.Dock="Right" Content="Smile"/>
 
-                <TextBox Name="InputMessage"/>
+                <TextBox Name="InputMessage" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True" Margin="2,1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"/>
             </DockPanel>
 
             <ListView Name="Chat">
 
             </ListView>
         </DockPanel>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Name="SubViewHolder" Visibility="Collapsed" Background="DarkGray">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="SideBarSizeGroup"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+                
+            <ContentPresenter Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Name="SideBarControl"/>
+
+            <ContentPresenter Grid.Row="0" Grid.Column="1" Name="ChatHeaderBar"/>
+        </Grid>
     </Grid>
 </Window>
